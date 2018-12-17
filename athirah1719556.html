@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <style>
+  * {
+  box-sizing: border-box;
+  }
+  body {
+  background-color: white;
+  padding: 20px;
+  font-family: Arial;
+  }
+  .main {
+  max-width: 1000px;
+  margin: auto;
+  }
+  h2{
+  font-family:monospace;
+  background-color:peachpuff;
+  color:lightcoral;
+  text-align: left;
+  width: 50%;
+  font-size: 30px;
+  padding: 8px 12px;
+  }
+  .row {
+  margin: 10px -16px;
+  }
+  .row,
+  .row > .column {
+  padding: 8px;
+  }
+  .column {
+  float:left;
+  width: 33.33%;
+  display: none;
+  }
+  .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+  .content {
+  background-color: peachpuff;
+  padding: 10px;
+  }
+  .show {
+  display: block;
+  }
+  .btn {
+  font-family:fantasy;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: peachpuff;
+  cursor: pointer;
+  }
+  .btn:hover {
+  background-color: #ddd;
+  }
+  .btn.active {
+  background-color: #666;
+  color: white;
+  }
+
+  </style>
+  </head>
+  <body>
+    <h2>My Resume</h2>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> All Details</button>
+  <button class="btn" onclick="filterSelection('personal')"> Personal detail</button>
+  <button class="btn" onclick="filterSelection('education')"> Education</button>
+  <button class="btn" onclick="filterSelection('experience')"> Skill and Other Information</button>
+</div>
+
+<div class="row">
+  <div class="column personal">
+    <div class="content">
+      <img src="IMG_8963.JPG" alt="myimage" style="width:100%">
+      <h4>NAME</h4>
+      <p>Wan Nur Athirah binti Wan Zakaria</p>
+      <h4>ADDRESS</h4>
+      <p>1363 Lorong Surau Baru Pasir Panjang,21100 Kuala Terengganu, Terengganu.</p>
+      <h4>MOBILE PHONE</h4>
+      <p>0111-6376284</p>
+      <h4>EMAIL</h4>
+      <p>athirahzakaria222@gmail.com</p>
+      <h4>MATRIC NO</h4>
+      <p>1719556</p>
+
+    </div>
+  </div>
+  <div class="column personal">
+    <div class="content">
+      <h4>Personal Profile and Interest</h4>
+      <p>My personal interests include reading, travelling, and cycling.
+         An independent, dedicated, efficient person. These attributes are proved through
+          the series of courses I have taken or I am taking as of now independently through online platforms.</p>
+      <p>A young, determined hard and smart working person.
+        I believe in task based roles and complete ownership of work.</p>
+      <p>Languages Known:English, Malay, and Arabic</p>
+
+      <ul>
+       <li>age 21</li>
+       <li>single, stay with parents.</li>
+       <li>good health</li>
+       <li>clean driver license for motocycle and car</li>
+    </ul>
+
+    </div>
+  </div>
+  <div class="column education">
+    <div class="content">
+      <h4>Education</h4>
+      <p>2017-2021</p>
+      <p>Bachelor degree. Computer Science. International Islamic University Malaysia.</p>
+      <p>CGPA:3.65</p>
+      <br>
+      <p>2015-2017</p>
+      <p>Foundation. Engineering and Computer Science. International Islamic University Malaysia.</p>
+    </div>
+  </div>
+  <div class="column experience">
+    <div class="content">
+
+      <h4>Skills</h4>
+      <p>Programming Skills</p>
+      <p>HTML, CSS, Java, JavaScript, learning C and C++</p>
+      <br>
+      <p>Soft Skills</p>
+      <p>Good Communication Skills, Presentation Skills, attitude towards leadership,
+         authorisation and delegation, conflict resolution and negotiation and a very good team worker.</p>
+    </div>
+  </div>
+  <div class="column experience">
+    <div class="content">
+
+      <h4>Other Information</h4>
+      <ul>
+       <li>Expected Salary:As per company standards</li>
+       <li>Area of Interest:Software Development, Programming,
+           Coding, App Development, Technical Support, Client service, Investment Banking,Analyst, Business Analysis</li>
+       <li>Joining Date:Immediate</li>
+    </ul>
+    </div>
+  </div>
+  <div class="column experience">
+    <div class="content">
+
+      <h4>Declaration</h4>
+    <p>I hereby declare that the details furnished above are true and correct to the best of my knowledge and belief.</p>
+    </div>
+  </div>
+
+  </div>
+  <script>
+  filterSelection("all")
+  function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("column");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    }
+  }
+
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+
+  </script>
+
+  </body>
+</html>
